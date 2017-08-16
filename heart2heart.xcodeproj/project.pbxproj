@@ -13,6 +13,7 @@
 		E2608E6E1F299782001F3578 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2608E6C1F299782001F3578 /* Main.storyboard */; };
 		E2608E701F299782001F3578 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2608E6F1F299782001F3578 /* Assets.xcassets */; };
 		E2608E731F299782001F3578 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2608E711F299782001F3578 /* LaunchScreen.storyboard */; };
+		E2611F6E1F44F38F00BE1BF9 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2611F6D1F44F38F00BE1BF9 /* File.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		E2608E6F1F299782001F3578 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E2608E721F299782001F3578 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E2608E741F299782001F3578 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E2611F6D1F44F38F00BE1BF9 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		E400EE8C66F054BC80ABCD8B /* Pods-heart2heart.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-heart2heart.debug.xcconfig"; path = "Pods/Target Support Files/Pods-heart2heart/Pods-heart2heart.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -80,6 +82,7 @@
 			children = (
 				E2608E681F299782001F3578 /* AppDelegate.swift */,
 				E2608E6A1F299782001F3578 /* ViewController.swift */,
+				E2611F6D1F44F38F00BE1BF9 /* File.swift */,
 				E2608E6C1F299782001F3578 /* Main.storyboard */,
 				E2608E6F1F299782001F3578 /* Assets.xcassets */,
 				E2608E711F299782001F3578 /* LaunchScreen.storyboard */,
@@ -213,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2608E6B1F299782001F3578 /* ViewController.swift in Sources */,
+				E2611F6E1F44F38F00BE1BF9 /* File.swift in Sources */,
 				E2608E691F299782001F3578 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
