@@ -37,7 +37,7 @@ class ViewController: UIViewController {
     }
     
     func signin() {
-        let baseurlstring = "http://192.168.20.6:9000/hello/"
+        let baseurlstring = "http://192.168.20.5:9000/hello/"
         let headers : HTTPHeaders = ["Authorization":"Token 5866c11078a7558af197b7b3a6dc83718e27c781"]
         
         Alamofire.request(baseurlstring, method: .post, headers: headers).responseJSON {
