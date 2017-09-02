@@ -14,7 +14,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        // Do any additional setup after loading the view, typically frdfom a nib.
         signin()
         let button = UIButton()
         button.setTitle("Click", for: .normal)
@@ -37,19 +37,33 @@ class ViewController: UIViewController {
     }
     
     func signin() {
-        let baseurlstring = "http://192.168.20.5:9000/hello/"
-        let headers : HTTPHeaders = ["Authorization":"Token 5866c11078a7558af197b7b3a6dc83718e27c781"]
+        let baseurlstring = "http://192.168.20.5:9000/resttest/"
+        let headers : HTTPHeaders = ["Authorization":"Token 25e8ba9457dfb05a462035595a5259dc8bb61d73"]
+        let params : [String:Any] = ["name":"aghogho", "file": UIImage(named: "property1.jpg")!]
+        let imageData = UIImageJPEGRepresentation(UIImage(named: "property1.jpg")!, 1.0)
         
-        Alamofire.request(baseurlstring, method: .post, headers: headers).responseJSON {
-            response in
-            guard let json = response.result.value as? [[String: Any]] else {
-                print("didnt get todo object as JSON from API")
-                print("Error: \(response.result.error)")
-                return
-            }
+        
+        let request = Alamofire.upload(
+            multipartFormData: { multipartFormData in
+                multipartFormData.append(imageData!, withName: "file", fileName: "property1.jpg", mimeType: "image/jpg")
+                multipartFormData.append("aghogho".data(using: .utf8)!, withName: "name")
+        },
+            to: baseurlstring,
             
-            print(json)
-        }
+            headers: headers,
+            
+            encodingCompletion: { encodingResult in
+                switch encodingResult {
+                case .success(let upload, _, _):
+                    upload.responseJSON { response in
+                        debugPrint(response)
+                    }
+                case .failure(let encodingError):
+                    print(encodingError)
+                }
+            }
+        )
+        print(request)
     }
 
 
