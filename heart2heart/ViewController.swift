@@ -39,7 +39,6 @@ class ViewController: UIViewController {
     func signin() {
         let baseurlstring = "http://192.168.20.5:9000/resttest/"
         let headers : HTTPHeaders = ["Authorization":"Token 25e8ba9457dfb05a462035595a5259dc8bb61d73"]
-        let params : [String:Any] = ["name":"aghogho", "file": UIImage(named: "property1.jpg")!]
         let imageData = UIImageJPEGRepresentation(UIImage(named: "property1.jpg")!, 1.0)
         
         
