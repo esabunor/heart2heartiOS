@@ -17,8 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         self.window = self.window ?? UIWindow()
         self.window?.backgroundColor = .white
-        let vc = ViewController()
-        self.window?.rootViewController = vc
+        let vc1 = ViewController()
+        let vc2 = TableViewController()
+        vc1.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 10)
+        vc2.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 11)
+        let tbc = UITabBarController()
+        tbc.viewControllers = [vc1, vc2]
+        
+        self.window?.rootViewController = tbc
         self.window?.makeKeyAndVisible()
         return true
     }

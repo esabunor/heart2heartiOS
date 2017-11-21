@@ -37,10 +37,11 @@ class ViewController: UIViewController {
     }
     
     func signin() {
-        let baseurlstring = "http://192.168.20.5:9000/resttest/"
+        let baseurlstring = "http://192.168.20.11:9000/resttest/"
         let headers : HTTPHeaders = ["Authorization":"Token 25e8ba9457dfb05a462035595a5259dc8bb61d73"]
         let imageData = UIImageJPEGRepresentation(UIImage(named: "property1.jpg")!, 1.0)
         
+        let image = UIImage(named: "property1.jpg")
         
         let request = Alamofire.upload(
             multipartFormData: { multipartFormData in
