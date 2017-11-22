@@ -1,15 +1,21 @@
 PODS:
   - Alamofire (4.5.0)
+  - Bolts/Tasks (1.8.4)
+  - Parse (1.15.1):
+    - Bolts/Tasks (~> 1.8)
   - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
   - Alamofire (~> 4.5)
+  - Parse
   - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
+  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  Parse: b7a77b20b8a6dede8058da1e2b339593578ce158
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: e8d226da4d636c4e51f4afc38f9851d4a3e1883d
+PODFILE CHECKSUM: 8a0316878d7b0ccdd1664ad40b4ae1ae7d6fe89a
 
 COCOAPODS: 1.2.1
