@@ -19,10 +19,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.backgroundColor = .white
         let vc1 = ViewController()
         let vc2 = TableViewController()
+        let nav = NavigationViewController(rootViewController: vc2)
         vc1.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 10)
         vc2.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 11)
+        vc2.tabBarItem.badgeValue = "9"
         let tbc = UITabBarController()
-        tbc.viewControllers = [vc1, vc2]
+        tbc.viewControllers = [vc1, nav]
         
         self.window?.rootViewController = tbc
         self.window?.makeKeyAndVisible()

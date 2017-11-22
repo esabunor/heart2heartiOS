@@ -10,12 +10,11 @@
 		CF60937B1286C2822730A71C /* Pods_heart2heart.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA56D322D4B09D78DD92A728 /* Pods_heart2heart.framework */; };
 		E2608E691F299782001F3578 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2608E681F299782001F3578 /* AppDelegate.swift */; };
 		E2608E6B1F299782001F3578 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2608E6A1F299782001F3578 /* ViewController.swift */; };
-		E2608E6E1F299782001F3578 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2608E6C1F299782001F3578 /* Main.storyboard */; };
 		E2608E701F299782001F3578 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2608E6F1F299782001F3578 /* Assets.xcassets */; };
-		E2608E731F299782001F3578 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2608E711F299782001F3578 /* LaunchScreen.storyboard */; };
-		E2611F6E1F44F38F00BE1BF9 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2611F6D1F44F38F00BE1BF9 /* File.swift */; };
 		E28A9E141FC47F7E003A2B05 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28A9E131FC47F7E003A2B05 /* TableViewController.swift */; };
 		E28A9E161FC48299003A2B05 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28A9E151FC48299003A2B05 /* TableViewCell.swift */; };
+		E28A9E181FC54C0D003A2B05 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28A9E171FC54C0D003A2B05 /* NavigationViewController.swift */; };
+		E2B39CCB1FC564A7007332D2 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B39CCA1FC564A7007332D2 /* Router.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,13 +23,12 @@
 		E2608E651F299782001F3578 /* heart2heart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = heart2heart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2608E681F299782001F3578 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2608E6A1F299782001F3578 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E2608E6D1F299782001F3578 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E2608E6F1F299782001F3578 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E2608E721F299782001F3578 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E2608E741F299782001F3578 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E2611F6D1F44F38F00BE1BF9 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		E28A9E131FC47F7E003A2B05 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		E28A9E151FC48299003A2B05 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		E28A9E171FC54C0D003A2B05 /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
+		E2B39CCA1FC564A7007332D2 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		E400EE8C66F054BC80ABCD8B /* Pods-heart2heart.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-heart2heart.debug.xcconfig"; path = "Pods/Target Support Files/Pods-heart2heart/Pods-heart2heart.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -88,10 +86,7 @@
 				E28A9E111FC47655003A2B05 /* Models */,
 				E2E266391FC4660500267120 /* Controllers */,
 				E2608E681F299782001F3578 /* AppDelegate.swift */,
-				E2611F6D1F44F38F00BE1BF9 /* File.swift */,
-				E2608E6C1F299782001F3578 /* Main.storyboard */,
 				E2608E6F1F299782001F3578 /* Assets.xcassets */,
-				E2608E711F299782001F3578 /* LaunchScreen.storyboard */,
 				E2608E741F299782001F3578 /* Info.plist */,
 			);
 			path = heart2heart;
@@ -100,6 +95,7 @@
 		E28A9E111FC47655003A2B05 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E2B39CCA1FC564A7007332D2 /* Router.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -115,6 +111,7 @@
 		E2E266391FC4660500267120 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E28A9E171FC54C0D003A2B05 /* NavigationViewController.swift */,
 				E2608E6A1F299782001F3578 /* ViewController.swift */,
 				E28A9E131FC47F7E003A2B05 /* TableViewController.swift */,
 			);
@@ -185,9 +182,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E2608E731F299782001F3578 /* LaunchScreen.storyboard in Resources */,
 				E2608E701F299782001F3578 /* Assets.xcassets in Resources */,
-				E2608E6E1F299782001F3578 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,32 +243,14 @@
 			files = (
 				E28A9E161FC48299003A2B05 /* TableViewCell.swift in Sources */,
 				E2608E6B1F299782001F3578 /* ViewController.swift in Sources */,
-				E2611F6E1F44F38F00BE1BF9 /* File.swift in Sources */,
 				E2608E691F299782001F3578 /* AppDelegate.swift in Sources */,
+				E28A9E181FC54C0D003A2B05 /* NavigationViewController.swift in Sources */,
+				E2B39CCB1FC564A7007332D2 /* Router.swift in Sources */,
 				E28A9E141FC47F7E003A2B05 /* TableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		E2608E6C1F299782001F3578 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E2608E6D1F299782001F3578 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		E2608E711F299782001F3578 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E2608E721F299782001F3578 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		E2608E751F299782001F3578 /* Debug */ = {
@@ -378,6 +355,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 7G6URHHVTY;
 				INFOPLIST_FILE = heart2heart/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.esabunor.heart2heart;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -392,6 +370,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 7G6URHHVTY;
 				INFOPLIST_FILE = heart2heart/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.esabunor.heart2heart;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -10,7 +10,11 @@ import UIKit
 import SwiftyJSON
 import Alamofire
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +24,15 @@ class ViewController: UIViewController {
         button.setTitle("Click", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(.blue, for: .normal)
+        self.title = "WA"
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: nil)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: nil, action: nil)
+        let search =  UISearchController(searchResultsController: nil)
+        search.searchResultsUpdater = self
+        self.navigationItem.searchController = search
+
+        self.navigationItem.prompt = "how are you?"
         view.addSubview(button)
         NSLayoutConstraint.activate([
             button.centerYAnchor.constraint(equalTo: view.centerYAnchor),
