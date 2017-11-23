@@ -67,7 +67,8 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
             multipartFormData: { multipartFormData in
                 multipartFormData.append(imageData!, withName: "file", fileName: "property1.jpg", mimeType: "image/jpg")
                 multipartFormData.append("aghogho".data(using: .utf8)!, withName: "name")
-        },
+            },
+            
             to: baseurlstring,
             
             headers: headers,

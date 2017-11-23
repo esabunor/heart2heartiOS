@@ -8,52 +8,7 @@
 
 import UIKit
 
-class TableViewController: UITableViewController , UIViewControllerPreviewingDelegate, UISearchResultsUpdating {
-    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
-        
-        guard let path = tableView.indexPathForRow(at: location) else {return nil}
-        guard let cell = tableView.cellForRow(at: path) else {return nil}
-        let state = cell.textLabel!.text
-        switch state! {
-        case "WA":
-            return ViewController()
-        case "ACT":
-            return TableViewController()
-        case "NSW":
-            return AddViewController()
-        case "PEOPLE":
-            return PeopleTableViewController()
-        default:
-            return nil
-        }
-    }
-    
-    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
-        (self.parent as! UINavigationController).pushViewController(viewControllerToCommit, animated: true)
-    }
-    
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let state = states[indexPath.row]
-        
-        switch state {
-        case "WA":
-            (self.parent as! UINavigationController).pushViewController(ViewController(), animated: true)
-        case "ACT":
-            (self.parent as! UINavigationController).pushViewController(TableViewController(), animated: true)
-        case "NSW":
-            (self.parent as! UINavigationController).pushViewController(AddViewController(), animated: true)
-        case "PEOPLE":
-            (self.parent as! UINavigationController).pushViewController(PeopleTableViewController(), animated: true)
-        default:
-            break
-        }
-    }
-    func updateSearchResults(for searchController: UISearchController) {
-        
-    }
-    
-    var states = ["WA", "ACT", "NSW", "ACT", "QLD", "PEOPLE"]
+class TableViewController: UITableViewController , UISearchResultsUpdating {
     
     init() {
         super.init(style: .plain)
@@ -97,31 +52,10 @@ class TableViewController: UITableViewController , UIViewControllerPreviewingDel
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return self.states.count
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let identifier = "cell"
-        var cell : UITableViewCell!
-
-        if cell == nil {
-            cell = UITableViewCell(style: .default, reuseIdentifier: identifier)
-        }
-        cell.textLabel!.text = self.states[indexPath.row]
-        cell.accessoryType = .disclosureIndicator
-        return cell
-    }
     
+    /*
+    UIControlEvent for self.tableView.refreshControl
+    */
     func valueChange(_ sender: Any) {
         defer {
             self.tableView.endUpdates()
@@ -138,49 +72,84 @@ class TableViewController: UITableViewController , UIViewControllerPreviewingDel
         self.tableView.reloadRows(at: paths, with: .automatic)
         
     }
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+}
+
+/*
+ 3D touch extension
+*/
+extension TableViewController : UIViewControllerPreviewingDelegate {
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        
+        guard let path = tableView.indexPathForRow(at: location) else {return nil}
+        guard let cell = tableView.cellForRow(at: path) else {return nil}
+        let state = cell.textLabel!.text
+        switch state! {
+        case "WA":
+            return ViewController()
+        case "ACT":
+            return TableViewController()
+        case "NSW":
+            return AddViewController()
+        case "PEOPLE":
+            return PeopleTableViewController()
+        default:
+            return nil
+        }
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        (self.parent as! UINavigationController).pushViewController(viewControllerToCommit, animated: true)
     }
-    */
+}
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+/*
+ TableView extension
+*/
+extension TableViewController {
+    
+    var states = ["WA", "ACT", "NSW", "ACT", "QLD", "PEOPLE"]
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let state = states[indexPath.row]
+        
+        switch state {
+        case "WA":
+            (self.parent as! UINavigationController).pushViewController(ViewController(), animated: true)
+        case "ACT":
+            (self.parent as! UINavigationController).pushViewController(TableViewController(), animated: true)
+        case "NSW":
+            (self.parent as! UINavigationController).pushViewController(AddViewController(), animated: true)
+        case "PEOPLE":
+            (self.parent as! UINavigationController).pushViewController(PeopleTableViewController(), animated: true)
+        default:
+            break
+        }
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        
     }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
     }
-    */
-
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return self.states.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let identifier = "cell"
+        var cell : UITableViewCell!
+        
+        if cell == nil {
+            cell = UITableViewCell(style: .default, reuseIdentifier: identifier)
+        }
+        cell.textLabel!.text = self.states[indexPath.row]
+        cell.accessoryType = .disclosureIndicator
+        return cell
+    }
 }
