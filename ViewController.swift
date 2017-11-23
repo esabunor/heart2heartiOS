@@ -10,12 +10,20 @@ import UIKit
 import SwiftyJSON
 import Alamofire
 
-class ViewController: UIViewController, UISearchResultsUpdating {
+class ViewController: UIViewController, UIPopoverPresentationControllerDelegate, UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         
     }
     
-
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .fullScreen
+    }
+    
+    func presentationController(_ controller: UIPresentationController, viewControllerForAdaptivePresentationStyle style: UIModalPresentationStyle) -> UIViewController? {
+        let nc = UINavigationController(rootViewController: controller.presentedViewController)
+        nc.topViewController?.navigationItem.rightBarButtonItem =  UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done(_:)))
+        return nc
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically frdfom a nib.
@@ -25,14 +33,13 @@ class ViewController: UIViewController, UISearchResultsUpdating {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(.blue, for: .normal)
         self.title = "WA"
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: nil)
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: nil, action: nil)
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(presentAdd(_:)))
+        
         let search =  UISearchController(searchResultsController: nil)
         search.searchResultsUpdater = self
         self.navigationItem.searchController = search
 
-        self.navigationItem.prompt = "how are you?"
         view.addSubview(button)
         NSLayoutConstraint.activate([
             button.centerYAnchor.constraint(equalTo: view.centerYAnchor),
@@ -79,6 +86,15 @@ class ViewController: UIViewController, UISearchResultsUpdating {
         print(request)
     }
 
-
+    func  presentAdd(_ sender: Any) {
+        let avc = AddViewController()
+        avc.modalPresentationStyle = .popover
+        avc.popoverPresentationController?.delegate = self
+        self.present(avc, animated: true, completion: nil)
+    }
+    
+    func done(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }
 

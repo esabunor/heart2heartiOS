@@ -8,7 +8,30 @@
 
 import UIKit
 
-class TableViewController: UITableViewController , UISearchResultsUpdating {
+class TableViewController: UITableViewController , UIViewControllerPreviewingDelegate, UISearchResultsUpdating {
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        
+        guard let path = tableView.indexPathForRow(at: location) else {return nil}
+        guard let cell = tableView.cellForRow(at: path) else {return nil}
+        let state = cell.textLabel!.text
+        switch state! {
+        case "WA":
+            return ViewController()
+        case "ACT":
+            return TableViewController()
+        case "NSW":
+            return AddViewController()
+        case "PEOPLE":
+            return PeopleTableViewController()
+        default:
+            return nil
+        }
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        (self.parent as! UINavigationController).pushViewController(viewControllerToCommit, animated: true)
+    }
+    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let state = states[indexPath.row]
@@ -18,6 +41,10 @@ class TableViewController: UITableViewController , UISearchResultsUpdating {
             (self.parent as! UINavigationController).pushViewController(ViewController(), animated: true)
         case "ACT":
             (self.parent as! UINavigationController).pushViewController(TableViewController(), animated: true)
+        case "NSW":
+            (self.parent as! UINavigationController).pushViewController(AddViewController(), animated: true)
+        case "PEOPLE":
+            (self.parent as! UINavigationController).pushViewController(PeopleTableViewController(), animated: true)
         default:
             break
         }
@@ -26,7 +53,7 @@ class TableViewController: UITableViewController , UISearchResultsUpdating {
         
     }
     
-    var states = ["WA", "ACT", "NSW", "ACT", "QLD"]
+    var states = ["WA", "ACT", "NSW", "ACT", "QLD", "PEOPLE"]
     
     init() {
         super.init(style: .plain)
@@ -48,23 +75,24 @@ class TableViewController: UITableViewController , UISearchResultsUpdating {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "My Table View"
-        self.tableView!.refreshControl = UIRefreshControl()
+        self.registerForPreviewing(with: self, sourceView: self.tableView)
+        self.tableView.refreshControl = UIRefreshControl()
         self.tableView.refreshControl?.addTarget(self, action: #selector(valueChange(_:)), for: .valueChanged)
         let search =  UISearchController(searchResultsController: nil)
         search.searchResultsUpdater = self
         self.navigationItem.largeTitleDisplayMode = .always
         self.navigationItem.rightBarButtonItem = self.editButtonItem
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .camera, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "2", style: .plain, target: nil, action: nil)
         self.navigationItem.searchController = search
         self.navigationItem.hidesSearchBarWhenScrolling = false
-        search.hidesNavigationBarDuringPresentation = true;
+        search.hidesNavigationBarDuringPresentation = true
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		CF60937B1286C2822730A71C /* Pods_heart2heart.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA56D322D4B09D78DD92A728 /* Pods_heart2heart.framework */; };
+		E20784841FC62E6C00FD98A5 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20784831FC62E6C00FD98A5 /* AddViewController.swift */; };
+		E20784861FC64E2700FD98A5 /* PeopleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20784851FC64E2700FD98A5 /* PeopleTableViewController.swift */; };
 		E2608E691F299782001F3578 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2608E681F299782001F3578 /* AppDelegate.swift */; };
 		E2608E6B1F299782001F3578 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2608E6A1F299782001F3578 /* ViewController.swift */; };
 		E2608E701F299782001F3578 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2608E6F1F299782001F3578 /* Assets.xcassets */; };
@@ -20,6 +22,8 @@
 /* Begin PBXFileReference section */
 		0A91D3AFB25B0950E360D81C /* Pods-heart2heart.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-heart2heart.release.xcconfig"; path = "Pods/Target Support Files/Pods-heart2heart/Pods-heart2heart.release.xcconfig"; sourceTree = "<group>"; };
 		AA56D322D4B09D78DD92A728 /* Pods_heart2heart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_heart2heart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E20784831FC62E6C00FD98A5 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		E20784851FC64E2700FD98A5 /* PeopleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleTableViewController.swift; sourceTree = "<group>"; };
 		E2608E651F299782001F3578 /* heart2heart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = heart2heart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2608E681F299782001F3578 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2608E6A1F299782001F3578 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +118,8 @@
 				E28A9E171FC54C0D003A2B05 /* NavigationViewController.swift */,
 				E2608E6A1F299782001F3578 /* ViewController.swift */,
 				E28A9E131FC47F7E003A2B05 /* TableViewController.swift */,
+				E20784851FC64E2700FD98A5 /* PeopleTableViewController.swift */,
+				E20784831FC62E6C00FD98A5 /* AddViewController.swift */,
 			);
 			name = Controllers;
 			path = ..;
@@ -195,9 +201,18 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-heart2heart/Pods-heart2heart-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/Parse/Parse.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parse.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -225,13 +240,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-heart2heart-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -243,9 +261,11 @@
 			files = (
 				E28A9E161FC48299003A2B05 /* TableViewCell.swift in Sources */,
 				E2608E6B1F299782001F3578 /* ViewController.swift in Sources */,
+				E20784841FC62E6C00FD98A5 /* AddViewController.swift in Sources */,
 				E2608E691F299782001F3578 /* AppDelegate.swift in Sources */,
 				E28A9E181FC54C0D003A2B05 /* NavigationViewController.swift in Sources */,
 				E2B39CCB1FC564A7007332D2 /* Router.swift in Sources */,
+				E20784861FC64E2700FD98A5 /* PeopleTableViewController.swift in Sources */,
 				E28A9E141FC47F7E003A2B05 /* TableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

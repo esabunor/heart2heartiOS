@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Parse
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -15,6 +15,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        let configuration = ParseClientConfiguration {
+            $0.applicationId = "myAppId"
+            $0.clientKey = ""
+            $0.server = "https://parser-server11.herokuapp.com/parse"
+        }
+        Parse.initialize(with: configuration)
+        
         self.window = self.window ?? UIWindow()
         self.window?.backgroundColor = .white
         let vc1 = ViewController()
