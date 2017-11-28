@@ -22,20 +22,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         Parse.initialize(with: configuration)
         
-        self.window = self.window ?? UIWindow()
-        self.window?.backgroundColor = .white
+        self.window = self.window ?? UIWindow() //*
+        self.window?.backgroundColor = .white //*
+        let data = [Any]()
         let vc1 = ViewController()
         let vc2 = TableViewController()
+        let vc3 = CollectionViewController(data: data)
         let nav = NavigationViewController(rootViewController: vc2)
         vc1.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 10)
         vc2.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 11)
+        vc3	.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 12)
         vc2.tabBarItem.badgeValue = "9"
         let tbc = UITabBarController()
-        tbc.viewControllers = [vc1, nav]
-        
-        self.window?.rootViewController = tbc
-        self.window?.makeKeyAndVisible()
-        return true
+        tbc.viewControllers = [vc1, nav, vc3]
+        tbc.selectedIndex = 1
+        var rootVC : UIViewController
+        if let _ = UserDefaults.standard.string(forKey: "Token") {
+            rootVC = tbc
+        } else {
+             UserDefaults.standard.set("Token", forKey: "Token")
+            rootVC = UIViewController()
+            
+        }
+        self.window?.rootViewController = rootVC //*
+        self.window?.makeKeyAndVisible() //*
+        return true //*
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

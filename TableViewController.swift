@@ -8,10 +8,13 @@
 
 import UIKit
 
-class TableViewController: UITableViewController , UISearchResultsUpdating {
+class TableViewController: UITableViewController , UISearchResultsUpdating, UIViewControllerTransitioningDelegate {
+    
+    var states = ["WA", "ACT", "NSW", "ACT", "QLD", "PEOPLE"]
     
     init() {
         super.init(style: .plain)
+        self.transitioningDelegate = self
     }
     
     init(states: [String]) {
@@ -41,6 +44,30 @@ class TableViewController: UITableViewController , UISearchResultsUpdating {
         self.navigationItem.searchController = search
         self.navigationItem.hidesSearchBarWhenScrolling = false
         search.hidesNavigationBarDuringPresentation = true
+        
+        let notiView = UIView()
+        notiView.backgroundColor = .teal_d3
+        let button = UIButton(type: .system)
+        button.layer.cornerRadius = 10
+        button.backgroundColor = .orange_l3
+        button.setTitle("click", for: .normal)
+        notiView.translatesAutoresizingMaskIntoConstraints = false
+        button.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(notiView)
+        notiView.isHidden = true
+        button.isHidden = true
+        self.view.addSubview(button)
+        NSLayoutConstraint.activate([
+            notiView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            notiView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
+            notiView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
+            notiView.heightAnchor.constraint(equalToConstant: 150),
+            
+            button.widthAnchor.constraint(equalToConstant: 60),
+            button.bottomAnchor.constraint(equalTo: notiView.bottomAnchor, constant: -30),
+            button.leadingAnchor.constraint(equalTo: notiView.leadingAnchor, constant: 30),
+            button.trailingAnchor.constraint(equalTo: notiView.trailingAnchor, constant: -30),
+            ])
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -70,6 +97,8 @@ class TableViewController: UITableViewController , UISearchResultsUpdating {
             paths.append(NSIndexPath(row: i, section: 0) as IndexPath)
         }
         self.tableView.reloadRows(at: paths, with: .automatic)
+        
+        UserDefaults.standard.set("Token", forKey: "Token")
         
     }
 }
@@ -108,8 +137,6 @@ extension TableViewController : UIViewControllerPreviewingDelegate {
 */
 extension TableViewController {
     
-    var states = ["WA", "ACT", "NSW", "ACT", "QLD", "PEOPLE"]
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let state = states[indexPath.row]
         
@@ -122,6 +149,8 @@ extension TableViewController {
             (self.parent as! UINavigationController).pushViewController(AddViewController(), animated: true)
         case "PEOPLE":
             (self.parent as! UINavigationController).pushViewController(PeopleTableViewController(), animated: true)
+        case "QLD":
+            (self.parent as! UINavigationController).pushViewController(SecondScrollViewController(), animated: true)
         default:
             break
         }

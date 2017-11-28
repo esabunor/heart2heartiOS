@@ -9,14 +9,37 @@
 import UIKit
 import Parse
 
-class AddViewController: UIViewController {
+class AddViewController: UIViewController, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning {
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+        return 10
+    }
+    
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        
+    }
+    
+    func interruptibleAnimator(using transitionContext: UIViewControllerContextTransitioning) -> UIViewImplicitlyAnimating {
+        return UIViewPropertyAnimator()
+    }
     let nameField = UITextField()
     let emailField = UITextField()
     let ageField = UITextField()
     
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        //self.transitioningDelegate = self
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return self
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.view.backgroundColor = .white
         let button = UIButton(type: .system)
         let button2 = UIButton(type: .system)
         button2.setTitle("Add Person", for: .normal)
@@ -25,7 +48,7 @@ class AddViewController: UIViewController {
         button2.translatesAutoresizingMaskIntoConstraints = false
         
         button.addTarget(self, action: #selector(resign(_:)), for: .touchUpInside)
-        button.addTarget(self, action: #selector(add(_:)), for: .touchUpInside)
+        button2.addTarget(self, action: #selector(add(_:)), for: .touchUpInside)
         
         nameField.placeholder = "Name"
         nameField.keyboardType = .asciiCapable
@@ -47,6 +70,7 @@ class AddViewController: UIViewController {
         
         self.view.addLayoutGuide(guide)
         self.view.addSubview(button)
+        self.view.sendSubview(toBack: button)
         self.view.addSubview(nameField)
         self.view.addSubview(emailField)
         self.view.addSubview(ageField)
@@ -110,5 +134,10 @@ class AddViewController: UIViewController {
         person["email"] = email
         person["age"] = age
         person.saveInBackground()
+        
+        let alertController = UIAlertController(title: "Successfully", message: "You've successfully add \(name)", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(action)
+        present(alertController, animated: true, completion: nil)
     }
 }

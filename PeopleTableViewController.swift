@@ -22,6 +22,15 @@ class PeopleTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         self.title = "People"
+        let tag = UITapGestureRecognizer(target: self, action: #selector(tap(_:)))
+        tag.numberOfTapsRequired = 1
+        tag.numberOfTouchesRequired = 1
+        let t = UILabel()
+        t.text = self.title
+        t.addGestureRecognizer(tag)
+        t.sizeToFit()
+        self.navigationItem.titleView = t
+        self.navigationItem.titleView?.isUserInteractionEnabled = true
         self.navigationItem.largeTitleDisplayMode = .never
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: nil, action: nil)
         var query = PFQuery(className:"Person")
@@ -73,7 +82,7 @@ class PeopleTableViewController: UITableViewController {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
         cell.textLabel?.text = self.objects[indexPath.row]["name"] as? String
         cell.detailTextLabel?.text = "\(self.objects[indexPath.row]["email"] as! String) \(self.objects[indexPath.row]["age"] as! Int)"
-
+        cell.accessoryType = .disclosureIndicator
         // Configure the cell...
 
         return cell
@@ -104,6 +113,19 @@ class PeopleTableViewController: UITableViewController {
                 print("Error: \(error!) ")
             }
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch objects[indexPath.row] {
+        case let obj:
+            (self.parent as! UINavigationController).pushViewController(PersonDetailViewController(objectId: obj.objectId!), animated: true)
+        }
+    }
+    
+    
+    func tap(_ sender: UITapGestureRecognizer) {
+        print("tapped")
+        (self.parent as! UINavigationController).pushViewController(ScrollViewController(), animated: true)
     }
     /*
     // Override to support conditional editing of the table view.

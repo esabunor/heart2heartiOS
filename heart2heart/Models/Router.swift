@@ -31,9 +31,9 @@ enum HeartToHeartRouter : URLRequestConvertible {
             }
         }
         
-        let params : ([String:Anu])? = {
+        let params : ([String:Any])? = {
             switch self {
-            case .get, .delele:
+            case .get, .delete:
                 return nil
             case .create(let para):
                 return (para)
@@ -58,9 +58,9 @@ enum HeartToHeartRouter : URLRequestConvertible {
             
             var url = URL(string: HeartToHeartRouter.baseUrlString)
             if let relativePath = relativePath {
-                url = url?.appendPathComponent(relativePath)
+                //url = url?.appendPathComponent(relativePath)
             }
-            return url
+            return url!
         }()
         
         var urlRequest = URLRequest(url: url)

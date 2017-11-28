@@ -10,7 +10,7 @@ import UIKit
 import SwiftyJSON
 import Alamofire
 
-class ViewController: UIViewController, UIPopoverPresentationControllerDelegate, UISearchResultsUpdating {
+class ViewController: UIViewController, UIPopoverPresentationControllerDelegate, UISearchResultsUpdating, UIViewControllerTransitioningDelegate {
     func updateSearchResults(for searchController: UISearchController) {
         
     }
@@ -26,6 +26,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .white
         // Do any additional setup after loading the view, typically frdfom a nib.
         signin()
         let button = UIButton()
@@ -45,6 +46,8 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
             button.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             button.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
+        
+        setUp()
     }
 
     override func didReceiveMemoryWarning() {
@@ -96,6 +99,46 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
     
     func done(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    var vc1 : UIViewController? = nil
+    var vc2 : UIViewController? = nil
+    func setUp() {
+        let v = self.view
+        let upBar = UISegmentedControl(items: ["vc1", "vc2"])
+        upBar.translatesAutoresizingMaskIntoConstraints = false
+        upBar.addTarget(self, action: #selector(segmentedValueChanged(_:)), for: .valueChanged)
+        v?.addSubview(upBar)
+        NSLayoutConstraint.activate([
+            upBar.topAnchor.constraint(equalTo: (v?.safeAreaLayoutGuide.topAnchor)!),
+            upBar.widthAnchor.constraint(equalToConstant: 50),
+            upBar.leadingAnchor.constraint(equalTo: (v?.leadingAnchor)!),
+            upBar.trailingAnchor.constraint(equalTo: (v?.trailingAnchor)!),
+        ])
+        
+        
+        vc1 = TableViewController()
+        vc2 = AddViewController()
+        
+    }
+    
+    func segmentedValueChanged(_ sender: UISegmentedControl) {
+        let index = sender.selectedSegmentIndex
+        print("value changeed")
+        guard let vc1 = vc1, let vc2 = vc2  else {
+            print("vcs are null")
+            return
+            
+        }
+        
+        switch index {
+        case 0:
+            self.present(vc1, animated: true, completion: nil)
+        case 1:
+            self.present(vc2, animated: true, completion: nil)
+        default:
+            break
+        }
     }
 }
 

@@ -10,6 +10,12 @@
 		CF60937B1286C2822730A71C /* Pods_heart2heart.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA56D322D4B09D78DD92A728 /* Pods_heart2heart.framework */; };
 		E20784841FC62E6C00FD98A5 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20784831FC62E6C00FD98A5 /* AddViewController.swift */; };
 		E20784861FC64E2700FD98A5 /* PeopleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20784851FC64E2700FD98A5 /* PeopleTableViewController.swift */; };
+		E20784881FC73B5500FD98A5 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20784871FC73B5500FD98A5 /* CollectionViewController.swift */; };
+		E22F33A01FCBE6F700749976 /* PersonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22F339F1FCBE6F700749976 /* PersonDetailViewController.swift */; };
+		E22F33A21FCC135D00749976 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22F33A11FCC135D00749976 /* PageViewController.swift */; };
+		E22F33A41FCC14E600749976 /* SecondScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22F33A31FCC14E600749976 /* SecondScrollViewController.swift */; };
+		E2334D721FC74E8D005A95F7 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2334D711FC74E8D005A95F7 /* UIColorExtension.swift */; };
+		E24A06851FCB144500C5296F /* ScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24A06841FCB144200C5296F /* ScrollViewController.swift */; };
 		E2608E691F299782001F3578 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2608E681F299782001F3578 /* AppDelegate.swift */; };
 		E2608E6B1F299782001F3578 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2608E6A1F299782001F3578 /* ViewController.swift */; };
 		E2608E701F299782001F3578 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2608E6F1F299782001F3578 /* Assets.xcassets */; };
@@ -24,6 +30,12 @@
 		AA56D322D4B09D78DD92A728 /* Pods_heart2heart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_heart2heart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E20784831FC62E6C00FD98A5 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		E20784851FC64E2700FD98A5 /* PeopleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleTableViewController.swift; sourceTree = "<group>"; };
+		E20784871FC73B5500FD98A5 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		E22F339F1FCBE6F700749976 /* PersonDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailViewController.swift; sourceTree = "<group>"; };
+		E22F33A11FCC135D00749976 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		E22F33A31FCC14E600749976 /* SecondScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondScrollViewController.swift; sourceTree = "<group>"; };
+		E2334D711FC74E8D005A95F7 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		E24A06841FCB144200C5296F /* ScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewController.swift; sourceTree = "<group>"; };
 		E2608E651F299782001F3578 /* heart2heart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = heart2heart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2608E681F299782001F3578 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2608E6A1F299782001F3578 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -108,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				E28A9E151FC48299003A2B05 /* TableViewCell.swift */,
+				E2334D711FC74E8D005A95F7 /* UIColorExtension.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -117,9 +130,14 @@
 			children = (
 				E28A9E171FC54C0D003A2B05 /* NavigationViewController.swift */,
 				E2608E6A1F299782001F3578 /* ViewController.swift */,
+				E22F33A11FCC135D00749976 /* PageViewController.swift */,
+				E24A06841FCB144200C5296F /* ScrollViewController.swift */,
 				E28A9E131FC47F7E003A2B05 /* TableViewController.swift */,
+				E22F339F1FCBE6F700749976 /* PersonDetailViewController.swift */,
 				E20784851FC64E2700FD98A5 /* PeopleTableViewController.swift */,
 				E20784831FC62E6C00FD98A5 /* AddViewController.swift */,
+				E22F33A31FCC14E600749976 /* SecondScrollViewController.swift */,
+				E20784871FC73B5500FD98A5 /* CollectionViewController.swift */,
 			);
 			name = Controllers;
 			path = ..;
@@ -259,12 +277,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E20784881FC73B5500FD98A5 /* CollectionViewController.swift in Sources */,
 				E28A9E161FC48299003A2B05 /* TableViewCell.swift in Sources */,
 				E2608E6B1F299782001F3578 /* ViewController.swift in Sources */,
 				E20784841FC62E6C00FD98A5 /* AddViewController.swift in Sources */,
 				E2608E691F299782001F3578 /* AppDelegate.swift in Sources */,
 				E28A9E181FC54C0D003A2B05 /* NavigationViewController.swift in Sources */,
 				E2B39CCB1FC564A7007332D2 /* Router.swift in Sources */,
+				E24A06851FCB144500C5296F /* ScrollViewController.swift in Sources */,
+				E22F33A41FCC14E600749976 /* SecondScrollViewController.swift in Sources */,
+				E22F33A01FCBE6F700749976 /* PersonDetailViewController.swift in Sources */,
+				E2334D721FC74E8D005A95F7 /* UIColorExtension.swift in Sources */,
+				E22F33A21FCC135D00749976 /* PageViewController.swift in Sources */,
 				E20784861FC64E2700FD98A5 /* PeopleTableViewController.swift in Sources */,
 				E28A9E141FC47F7E003A2B05 /* TableViewController.swift in Sources */,
 			);
