@@ -29,9 +29,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let vc2 = TableViewController()
         let vc3 = CollectionViewController(data: data)
         let nav = NavigationViewController(rootViewController: vc2)
+       
         vc1.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 10)
         vc2.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 11)
-        vc3	.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 12)
+        vc3.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 12)
+        
         vc2.tabBarItem.badgeValue = "9"
         let tbc = UITabBarController()
         tbc.viewControllers = [vc1, nav, vc3]
@@ -43,6 +45,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
              UserDefaults.standard.set("Token", forKey: "Token")
             rootVC = UIViewController()
             
+        }
+        var query = PFQuery(className: "Person")
+        query.findObjectsInBackground {
+            if $1 != nil {
+                print($1)
+            } else {
+                let objects = $0 as! [PFObject]
+                let vc4 = PageViewController()
+                vc4.setViewControllers([PersonDetailViewController(objectId: objects[0].objectId!)], direction: .forward, animated: true, completion: nil)
+                vc4.setPFObjects(objects)
+                vc4.dataSource = vc4
+                vc4.tabBarItem = UITabBarItem(tabBarSystemItem: .downloads, tag: 13)
+                tbc.viewControllers?.append(vc4)
+            }
         }
         self.window?.rootViewController = rootVC //*
         self.window?.makeKeyAndVisible() //*
@@ -71,6 +87,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+         return .portrait
+    }
 }
 

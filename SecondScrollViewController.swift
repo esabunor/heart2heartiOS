@@ -13,11 +13,12 @@ class SecondScrollViewController: UIViewController, UIScrollViewDelegate {
     var pager = UIPageControl()
     let sv = UIScrollView()
     
+    let sc = UISegmentedControl(items: ["first", "second", "third"])
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         self.title = "Second Scroll VC"
-        let sc = UISegmentedControl(items: ["first", "second", "third"])
         sc.selectedSegmentIndex = 0
         self.navigationItem.titleView = sc
         
@@ -73,12 +74,20 @@ class SecondScrollViewController: UIViewController, UIScrollViewDelegate {
         self.pager.numberOfPages = 3
         NSLayoutConstraint.activate([
             self.pager.centerXAnchor.constraint(equalTo: (self.view?.safeAreaLayoutGuide.centerXAnchor)!),
-            self.pager.bottomAnchor.constraint(equalTo: (self.view?.safeAreaLayoutGuide.bottomAnchor)!, constant: 80),
+            self.pager.bottomAnchor.constraint(equalTo: (self.view?.safeAreaLayoutGuide.bottomAnchor)!, constant: -80),
             self.pager.trailingAnchor.constraint(equalTo: (self.view?.safeAreaLayoutGuide.trailingAnchor)!),
             self.pager.leadingAnchor.constraint(equalTo: (self.view?.safeAreaLayoutGuide.leadingAnchor)!),
         ])
+        
+        sc.addTarget(self, action: #selector(segmentControlValueChanged(_:)), for: .valueChanged)
     }
-
+    
+    func segmentControlValueChanged(_ sender: UISegmentedControl) {
+        self.pager.currentPage = sender.selectedSegmentIndex
+        let w = self.sv.bounds.width
+        let p = CGPoint(x: CGFloat(sender.selectedSegmentIndex)*w, y: 0)
+        self.sv.setContentOffset(p, animated: true)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -88,6 +97,7 @@ class SecondScrollViewController: UIViewController, UIScrollViewDelegate {
         let x = self.sv.contentOffset.x
         let w = self.sv.bounds.size.width
         self.pager.currentPage = Int(x/w)
+        self.sc.selectedSegmentIndex = self.pager.currentPage
     }
     /*
     // MARK: - Navigation

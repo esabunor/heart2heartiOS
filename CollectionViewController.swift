@@ -130,7 +130,7 @@ class CollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let v = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: header, for: indexPath)
         
-        
+        //to prevent section header from overlapping check the subview count of cell
         if v.subviews.count == 0 {
             let lab = UILabel()
             lab.textColor = .cyan_d3

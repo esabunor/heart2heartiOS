@@ -144,7 +144,7 @@ extension TableViewController {
         case "WA":
             (self.parent as! UINavigationController).pushViewController(ViewController(), animated: true)
         case "ACT":
-            (self.parent as! UINavigationController).pushViewController(TableViewController(), animated: true)
+            (self.parent as! UINavigationController).pushViewController(MyViewController(), animated: true)
         case "NSW":
             (self.parent as! UINavigationController).pushViewController(AddViewController(), animated: true)
         case "PEOPLE":
