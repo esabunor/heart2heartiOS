@@ -26,10 +26,11 @@ class PageViewController: UIPageViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let proxy = UIPageControl.appearance()
-//        proxy.pageIndicatorTintColor = .amber
-//        proxy.currentPageIndicatorTintColor = .red
-//        proxy.backgroundColor = .light_blue_l1
+        let proxy = UIPageControl.appearance(whenContainedInInstancesOf: [PageViewController.self])
+        proxy.pageIndicatorTintColor = .amber
+        proxy.currentPageIndicatorTintColor = .red
+        proxy.backgroundColor = .light_blue_l1
+        self.view.addSubview(proxy)
 //        let label = UILabel()
 //        self.view.addSubview(label)
 //        label.translatesAutoresizingMaskIntoConstraints = false
@@ -38,6 +39,13 @@ class PageViewController: UIPageViewController {
 //        NSLayoutConstraint.activate([
 //            label.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor)
 //        ])
+        proxy.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+                proxy.centerXAnchor.constraint(equalTo: (self.view?.safeAreaLayoutGuide.centerXAnchor)!),
+                proxy.bottomAnchor.constraint(equalTo: (self.view?.safeAreaLayoutGuide.bottomAnchor)!),
+//                proxy.trailingAnchor.constraint(equalTo: (self.view?.safeAreaLayoutGuide.trailingAnchor)!),
+//                proxy.leadingAnchor.constraint(equalTo: (self.view?.safeAreaLayoutGuide.leadingAnchor)!),
+        ])
         // Do any additional setup after loading the view.
     }
 
@@ -59,22 +67,17 @@ class PageViewController: UIPageViewController {
     }
     */
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        for view in self.view.subviews{
-            if view is UIScrollView{
-                view.frame =  UIScreen.main.bounds
-            } else if view is UIPageControl{
-                view.backgroundColor = .light_blue_l1
-                NSLayoutConstraint.activate([
-                        view.centerXAnchor.constraint(equalTo: (self.view?.safeAreaLayoutGuide.centerXAnchor)!),
-                        view.bottomAnchor.constraint(equalTo: (self.view?.safeAreaLayoutGuide.bottomAnchor)!, constant: -80),
-                        view.trailingAnchor.constraint(equalTo: (self.view?.safeAreaLayoutGuide.trailingAnchor)!),
-                        view.leadingAnchor.constraint(equalTo: (self.view?.safeAreaLayoutGuide.leadingAnchor)!),
-                ])
-            }
-        }
-    }
+//    override func viewDidLayoutSubviews() {
+//        super.viewDidLayoutSubviews()
+//        for view in self.view.subviews{
+//            if view is UIScrollView{
+//                view.frame =  UIScreen.main.bounds
+//            } else if view is UIPageControl{
+//                view.backgroundColor = .light_blue_l1
+//
+//            }
+//        }
+//    }
 
 }
 

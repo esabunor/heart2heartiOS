@@ -21,6 +21,8 @@
 		E2608E701F299782001F3578 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2608E6F1F299782001F3578 /* Assets.xcassets */; };
 		E287BAF01FCD527500F0E271 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E287BAEF1FCD527500F0E271 /* Launch Screen.storyboard */; };
 		E287BAF21FCDB79900F0E271 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E287BAF11FCDB79900F0E271 /* MyViewController.swift */; };
+		E287BAF41FCE0BB900F0E271 /* SecondPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E287BAF31FCE0BB900F0E271 /* SecondPageViewController.swift */; };
+		E287BAF61FCE0CC200F0E271 /* PictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E287BAF51FCE0CC200F0E271 /* PictureViewController.swift */; };
 		E28A9E141FC47F7E003A2B05 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28A9E131FC47F7E003A2B05 /* TableViewController.swift */; };
 		E28A9E161FC48299003A2B05 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28A9E151FC48299003A2B05 /* TableViewCell.swift */; };
 		E28A9E181FC54C0D003A2B05 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28A9E171FC54C0D003A2B05 /* NavigationViewController.swift */; };
@@ -45,6 +47,8 @@
 		E2608E741F299782001F3578 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E287BAEF1FCD527500F0E271 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		E287BAF11FCDB79900F0E271 /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
+		E287BAF31FCE0BB900F0E271 /* SecondPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondPageViewController.swift; sourceTree = "<group>"; };
+		E287BAF51FCE0CC200F0E271 /* PictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureViewController.swift; sourceTree = "<group>"; };
 		E28A9E131FC47F7E003A2B05 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		E28A9E151FC48299003A2B05 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		E28A9E171FC54C0D003A2B05 /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
@@ -139,6 +143,8 @@
 				E24A06841FCB144200C5296F /* ScrollViewController.swift */,
 				E28A9E131FC47F7E003A2B05 /* TableViewController.swift */,
 				E287BAF11FCDB79900F0E271 /* MyViewController.swift */,
+				E287BAF31FCE0BB900F0E271 /* SecondPageViewController.swift */,
+				E287BAF51FCE0CC200F0E271 /* PictureViewController.swift */,
 				E22F339F1FCBE6F700749976 /* PersonDetailViewController.swift */,
 				E20784851FC64E2700FD98A5 /* PeopleTableViewController.swift */,
 				E20784831FC62E6C00FD98A5 /* AddViewController.swift */,
@@ -285,11 +291,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				E20784881FC73B5500FD98A5 /* CollectionViewController.swift in Sources */,
+				E287BAF41FCE0BB900F0E271 /* SecondPageViewController.swift in Sources */,
 				E28A9E161FC48299003A2B05 /* TableViewCell.swift in Sources */,
 				E2608E6B1F299782001F3578 /* ViewController.swift in Sources */,
 				E20784841FC62E6C00FD98A5 /* AddViewController.swift in Sources */,
 				E2608E691F299782001F3578 /* AppDelegate.swift in Sources */,
 				E28A9E181FC54C0D003A2B05 /* NavigationViewController.swift in Sources */,
+				E287BAF61FCE0CC200F0E271 /* PictureViewController.swift in Sources */,
 				E2B39CCB1FC564A7007332D2 /* Router.swift in Sources */,
 				E24A06851FCB144500C5296F /* ScrollViewController.swift in Sources */,
 				E22F33A41FCC14E600749976 /* SecondScrollViewController.swift in Sources */,

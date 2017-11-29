@@ -8,6 +8,8 @@
 
 import UIKit
 import Parse
+import UserNotifications
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -27,7 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let data = [Any]()
         let vc1 = ViewController()
         let vc2 = TableViewController()
-        let vc3 = CollectionViewController(data: data)
+        let vc3 = SecondPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+        vc3.setViewControllers([PictureViewController()], direction: .forward, animated: true, completion: nil)
         let nav = NavigationViewController(rootViewController: vc2)
        
         vc1.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 10)
@@ -62,6 +65,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         self.window?.rootViewController = rootVC //*
         self.window?.makeKeyAndVisible() //*
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge])
+        { (granted, error) in
+        }
+            
+        UIApplication.shared.applicationIconBadgeNumber = 23
         return true //*
     }
 
@@ -89,6 +98,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
          return .portrait
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        print(deviceToken.description)
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print(error)
     }
 }
 
