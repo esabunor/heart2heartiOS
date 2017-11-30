@@ -24,13 +24,21 @@ class PageViewController: UIPageViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    var pager = UIPageControl()
     override func viewDidLoad() {
         super.viewDidLoad()
-        let proxy = UIPageControl.appearance(whenContainedInInstancesOf: [PageViewController.self])
-        proxy.pageIndicatorTintColor = .amber
-        proxy.currentPageIndicatorTintColor = .red
-        proxy.backgroundColor = .light_blue_l1
-        self.view.addSubview(proxy)
+        self.view.addSubview(self.pager)
+        self.pager.translatesAutoresizingMaskIntoConstraints = false
+        self.pager.currentPageIndicatorTintColor = .amber
+        self.pager.pageIndicatorTintColor = .cyan_d3
+        self.delegate = self
+        NSLayoutConstraint.activate([
+            self.pager.centerXAnchor.constraint(equalTo: (self.view?.safeAreaLayoutGuide.centerXAnchor)!),
+            self.pager.bottomAnchor.constraint(equalTo: (self.view?.safeAreaLayoutGuide.bottomAnchor)!, constant: -80),
+            self.pager.trailingAnchor.constraint(equalTo: (self.view?.safeAreaLayoutGuide.trailingAnchor)!),
+            self.pager.leadingAnchor.constraint(equalTo: (self.view?.safeAreaLayoutGuide.leadingAnchor)!),
+            ])
+        //self.view.addSubview(proxy)
 //        let label = UILabel()
 //        self.view.addSubview(label)
 //        label.translatesAutoresizingMaskIntoConstraints = false
@@ -39,13 +47,13 @@ class PageViewController: UIPageViewController {
 //        NSLayoutConstraint.activate([
 //            label.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor)
 //        ])
-        proxy.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-                proxy.centerXAnchor.constraint(equalTo: (self.view?.safeAreaLayoutGuide.centerXAnchor)!),
-                proxy.bottomAnchor.constraint(equalTo: (self.view?.safeAreaLayoutGuide.bottomAnchor)!),
-//                proxy.trailingAnchor.constraint(equalTo: (self.view?.safeAreaLayoutGuide.trailingAnchor)!),
-//                proxy.leadingAnchor.constraint(equalTo: (self.view?.safeAreaLayoutGuide.leadingAnchor)!),
-        ])
+//        proxy.translatesAutoresizingMaskIntoConstraints = false
+//        NSLayoutConstraint.activate([
+//                proxy.centerXAnchor.constraint(equalTo: (self.view?.safeAreaLayoutGuide.centerXAnchor)!),
+//                proxy.bottomAnchor.constraint(equalTo: (self.view?.safeAreaLayoutGuide.bottomAnchor)!),
+////                proxy.trailingAnchor.constraint(equalTo: (self.view?.safeAreaLayoutGuide.trailingAnchor)!),
+////                proxy.leadingAnchor.constraint(equalTo: (self.view?.safeAreaLayoutGuide.leadingAnchor)!),
+//        ])
         // Do any additional setup after loading the view.
     }
 
@@ -56,6 +64,8 @@ class PageViewController: UIPageViewController {
     
     func setPFObjects(_ objects: [PFObject]) {
         self.objects = objects
+        
+        self.pager.numberOfPages = self.objects.count
     }
     /*
     // MARK: - Navigation
@@ -81,10 +91,6 @@ class PageViewController: UIPageViewController {
 
 }
 
-
-extension PageViewController : UIPageViewControllerDelegate {
-    
-}
 
 extension PageViewController : UIPageViewControllerDataSource {
     
@@ -130,6 +136,17 @@ extension PageViewController : UIPageViewControllerDataSource {
             return 0
         }
         let arrid = self.objects.map{$0.objectId!}
-        return arrid.index{$0 == vc.objectId}!
+        let ind = arrid.index{$0 == vc.objectId}!
+        return ind
+    }
+}
+
+extension PageViewController : UIPageViewControllerDelegate {
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        if let vc = pageViewController.childViewControllers[0] as? PersonDetailViewController {
+            let arrid = self.objects.map{$0.objectId!}
+            let ind = arrid.index{$0 == vc.objectId}!
+            self.pager.currentPage = ind
+        }
     }
 }

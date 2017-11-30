@@ -11,6 +11,21 @@ import SwiftyJSON
 import Alamofire
 
 class ViewController: UIViewController, UIPopoverPresentationControllerDelegate, UISearchResultsUpdating, UIViewControllerTransitioningDelegate {
+    
+    override var previewActionItems: [UIPreviewActionItem] {
+        let i1 = UIPreviewAction(title: "Item 1", style: .default) {
+            _ in
+            let alert = UIAlertController(title: "You clicked 1", message: "Yay you've just clicked 2", preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            self.dismiss(animated: true, completion: {
+                _ in
+                self.present(alert, animated: true, completion: nil)
+            })
+            
+        }
+        return [i1]
+    }
     func updateSearchResults(for searchController: UISearchController) {
         
     }
@@ -48,6 +63,9 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
         ])
         
         setUp()
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {

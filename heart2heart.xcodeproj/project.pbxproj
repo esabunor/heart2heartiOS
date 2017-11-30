@@ -23,6 +23,9 @@
 		E287BAF21FCDB79900F0E271 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E287BAF11FCDB79900F0E271 /* MyViewController.swift */; };
 		E287BAF41FCE0BB900F0E271 /* SecondPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E287BAF31FCE0BB900F0E271 /* SecondPageViewController.swift */; };
 		E287BAF61FCE0CC200F0E271 /* PictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E287BAF51FCE0CC200F0E271 /* PictureViewController.swift */; };
+		E287BAF81FCF248500F0E271 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E287BAF71FCF248500F0E271 /* CameraViewController.swift */; };
+		E287BAFA1FCFDC8400F0E271 /* fire-truck-air-horn_daniel-simion.wav in Resources */ = {isa = PBXBuildFile; fileRef = E287BAF91FCFDC8300F0E271 /* fire-truck-air-horn_daniel-simion.wav */; };
+		E287BAFC1FD0473A00F0E271 /* FontTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E287BAFB1FD0473900F0E271 /* FontTableViewController.swift */; };
 		E28A9E141FC47F7E003A2B05 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28A9E131FC47F7E003A2B05 /* TableViewController.swift */; };
 		E28A9E161FC48299003A2B05 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28A9E151FC48299003A2B05 /* TableViewCell.swift */; };
 		E28A9E181FC54C0D003A2B05 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28A9E171FC54C0D003A2B05 /* NavigationViewController.swift */; };
@@ -49,6 +52,9 @@
 		E287BAF11FCDB79900F0E271 /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
 		E287BAF31FCE0BB900F0E271 /* SecondPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondPageViewController.swift; sourceTree = "<group>"; };
 		E287BAF51FCE0CC200F0E271 /* PictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureViewController.swift; sourceTree = "<group>"; };
+		E287BAF71FCF248500F0E271 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		E287BAF91FCFDC8300F0E271 /* fire-truck-air-horn_daniel-simion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "fire-truck-air-horn_daniel-simion.wav"; path = "../../../../Downloads/fire-truck-air-horn_daniel-simion.wav"; sourceTree = "<group>"; };
+		E287BAFB1FD0473900F0E271 /* FontTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontTableViewController.swift; sourceTree = "<group>"; };
 		E28A9E131FC47F7E003A2B05 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		E28A9E151FC48299003A2B05 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		E28A9E171FC54C0D003A2B05 /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +112,7 @@
 		E2608E671F299782001F3578 /* heart2heart */ = {
 			isa = PBXGroup;
 			children = (
+				E287BAF91FCFDC8300F0E271 /* fire-truck-air-horn_daniel-simion.wav */,
 				E287BAEF1FCD527500F0E271 /* Launch Screen.storyboard */,
 				E28A9E121FC47660003A2B05 /* Views */,
 				E28A9E111FC47655003A2B05 /* Models */,
@@ -137,6 +144,7 @@
 		E2E266391FC4660500267120 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E287BAFB1FD0473900F0E271 /* FontTableViewController.swift */,
 				E28A9E171FC54C0D003A2B05 /* NavigationViewController.swift */,
 				E2608E6A1F299782001F3578 /* ViewController.swift */,
 				E22F33A11FCC135D00749976 /* PageViewController.swift */,
@@ -150,6 +158,7 @@
 				E20784831FC62E6C00FD98A5 /* AddViewController.swift */,
 				E22F33A31FCC14E600749976 /* SecondScrollViewController.swift */,
 				E20784871FC73B5500FD98A5 /* CollectionViewController.swift */,
+				E287BAF71FCF248500F0E271 /* CameraViewController.swift */,
 			);
 			name = Controllers;
 			path = ..;
@@ -219,6 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E287BAF01FCD527500F0E271 /* Launch Screen.storyboard in Resources */,
+				E287BAFA1FCFDC8400F0E271 /* fire-truck-air-horn_daniel-simion.wav in Resources */,
 				E2608E701F299782001F3578 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -292,6 +302,7 @@
 			files = (
 				E20784881FC73B5500FD98A5 /* CollectionViewController.swift in Sources */,
 				E287BAF41FCE0BB900F0E271 /* SecondPageViewController.swift in Sources */,
+				E287BAFC1FD0473A00F0E271 /* FontTableViewController.swift in Sources */,
 				E28A9E161FC48299003A2B05 /* TableViewCell.swift in Sources */,
 				E2608E6B1F299782001F3578 /* ViewController.swift in Sources */,
 				E20784841FC62E6C00FD98A5 /* AddViewController.swift in Sources */,
@@ -307,6 +318,7 @@
 				E20784861FC64E2700FD98A5 /* PeopleTableViewController.swift in Sources */,
 				E287BAF21FCDB79900F0E271 /* MyViewController.swift in Sources */,
 				E28A9E141FC47F7E003A2B05 /* TableViewController.swift in Sources */,
+				E287BAF81FCF248500F0E271 /* CameraViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

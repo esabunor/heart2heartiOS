@@ -34,6 +34,12 @@ class PeopleTableViewController: UITableViewController {
         self.navigationItem.largeTitleDisplayMode = .never
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: nil, action: nil)
         var query = PFQuery(className:"Person")
+        let baritem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let baritem1 = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: nil)
+        let baritem2 = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: nil)
+        self.toolbarItems = [baritem1, baritem, baritem2]
+        self.parent?.toolbarItems = [baritem1, baritem, baritem2]
+        (self.parent as! UINavigationController).toolbar.isHidden = false
         self.tableView.refreshControl = UIRefreshControl()
         self.tableView.refreshControl?.beginRefreshing()
         self.tableView.refreshControl?.addTarget(self, action: #selector(valueChanged(_:)), for: .valueChanged)

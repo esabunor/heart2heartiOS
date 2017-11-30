@@ -10,6 +10,7 @@ import UIKit
 import Photos
 import MobileCoreServices
 import UserNotifications
+import AudioToolbox
 
 class PictureViewController: UIViewController {
     let sc = UIScrollView()
@@ -108,9 +109,9 @@ class PictureViewController: UIViewController {
     
     func fetchImages() {
         let assetCollection = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .albumRegular, options: nil)
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(pickImage(_:)))
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(self.pickImage(_:)))
         
-        gesture.numberOfTapsRequired = 1
+        gesture.numberOfTapsRequired = 2
         guard let firstAssetColl = assetCollection.firstObject else {return}
         
         let assets = PHAsset.fetchAssets(in: firstAssetColl, options: nil)
@@ -123,8 +124,10 @@ class PictureViewController: UIViewController {
                 
                 guard let im = image else {return}
                 let iv = UIImageView(image: im)
+                iv.isUserInteractionEnabled = true
                 self.sc.addSubview(iv)
-                iv.addGestureRecognizer(gesture)
+               self.sc.addGestureRecognizer(gesture)
+                self.sc.isUserInteractionEnabled = true
                 iv.translatesAutoresizingMaskIntoConstraints = false
 //                con.append(iv.widthAnchor.constraint(equalToConstant: 150)
 //                con.append(iv.heightAnchor.constraint(equalToConstant: 150))
@@ -152,6 +155,16 @@ class PictureViewController: UIViewController {
     func pickImage(_ sender: UITapGestureRecognizer) {
         let loc = sender.location(in: sc)
         guard let im = sc.hitTest(loc, with: nil) as? UIImageView else {return}
+        let sndurl = Bundle.main.url(forResource: "fire-truck-air-horn_daniel-simion", withExtension: "wav")
+        var snd : SystemSoundID = 0
+        AudioServicesCreateSystemSoundID(sndurl as! CFURL, &snd)
+        AudioServicesAddSystemSoundCompletion(snd, nil, nil, {
+            sound, context in
+            AudioServicesRemoveSystemSoundCompletion(sound)
+            AudioServicesDisposeSystemSoundID(sound)
+            
+        }, nil)
+        AudioServicesPlayAlertSound(snd)
         let image = im.image
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFit

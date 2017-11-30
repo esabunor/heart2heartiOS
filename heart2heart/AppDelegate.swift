@@ -17,6 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        let shortcutItem = launchOptions?[UIApplicationLaunchOptionsKey.shortcutItem]
+        if let shortcutItem = shortcutItem as? UIApplicationShortcutItem {
+            print(shortcutItem.type)
+        }
         let configuration = ParseClientConfiguration {
             $0.applicationId = "myAppId"
             $0.clientKey = ""
@@ -30,16 +34,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let vc1 = ViewController()
         let vc2 = TableViewController()
         let vc3 = SecondPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+        let vc4 = UINavigationController(rootViewController: FontTableViewController(style: .grouped))
+        vc4.navigationBar.prefersLargeTitles = true
         vc3.setViewControllers([PictureViewController()], direction: .forward, animated: true, completion: nil)
         let nav = NavigationViewController(rootViewController: vc2)
        
         vc1.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 10)
         vc2.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 11)
         vc3.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 12)
+        vc4.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 13)
         
         vc2.tabBarItem.badgeValue = "9"
         let tbc = UITabBarController()
-        tbc.viewControllers = [vc1, nav, vc3]
+        tbc.viewControllers = [vc1, nav, vc3, vc4]
         tbc.selectedIndex = 1
         var rootVC : UIViewController
         if let _ = UserDefaults.standard.string(forKey: "Token") {
@@ -71,6 +78,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
             
         UIApplication.shared.applicationIconBadgeNumber = 23
+        let icon = UIApplicationShortcutIcon(type: .location)
+        let shortcut1 = UIApplicationShortcutItem(type: "Type1?", localizedTitle: "type one", localizedSubtitle: "type one sub", icon: icon, userInfo: nil)
+        UIApplication.shared.shortcutItems = [shortcut1]
         return true //*
     }
 
@@ -106,6 +116,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print(error)
+    }
+    
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        // for completing shortcut items
     }
 }
 
