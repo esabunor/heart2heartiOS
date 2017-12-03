@@ -64,6 +64,13 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
         
         setUp()
         
+        let v = MyView()
+        v.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(v)
+        v.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        v.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        v.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        v.widthAnchor.constraint(equalToConstant: 100).isActive = true
         
         
     }

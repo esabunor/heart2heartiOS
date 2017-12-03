@@ -177,8 +177,21 @@ extension TableViewController {
         if cell == nil {
             cell = UITableViewCell(style: .default, reuseIdentifier: identifier)
         }
+        cell.imageView?.image = #imageLiteral(resourceName: "download.jpeg")
+        let r = UIGraphicsImageRenderer(bounds: CGRect(x: 0, y: 0, width: 100, height: 100))
+        let im = r.image{
+            let con = $0.cgContext
+            con.saveGState()
+            con.addEllipse(in: CGRect(x: 0, y: 0, width: 100, height: 100))
+            con.clip()
+            con.draw(#imageLiteral(resourceName: "download.jpeg").cgImage!, in: CGRect(x: 0, y: 0, width: 100, height: 100))
+            con.restoreGState()
+        }
+        cell.imageView?.image = im
         cell.textLabel!.text = self.states[indexPath.row]
+        cell.detailTextLabel?.text = "yes"
         cell.accessoryType = .disclosureIndicator
         return cell
     }
 }
+
